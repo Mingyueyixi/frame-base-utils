@@ -1,0 +1,10 @@
+apply from: rootProject.file('module.gradle')
+android {
+    namespace 'com.lu.magic.frame.baseutils'
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+    implementation deps['androidx.appcompat:appcompat']
+    implementation deps['com.google.code.gson:gson']
+}
