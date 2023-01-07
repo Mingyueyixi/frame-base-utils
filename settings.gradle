@@ -31,5 +31,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "base-utils"
-include ':app'
+//include ':app'
 include ":library"
