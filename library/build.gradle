@@ -33,5 +33,5 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
     implementation(deps['androidx.appcompat:appcompat'])
     implementation(deps['com.google.code.gson:gson'])
-    implementation(deps['com.blankj:utilcodex'])
+//    implementation(deps['com.blankj:utilcodex'])
 }
