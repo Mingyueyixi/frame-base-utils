@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import com.lu.magic.util.log.LogUtil;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
@@ -77,6 +79,28 @@ public class AppUtil {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public static String getVersionName() {
+        try {
+            PackageManager manager = getContext().getPackageManager();
+            PackageInfo info = manager.getPackageInfo(getContext().getPackageName(), 0);
+            return info.versionName;
+        } catch (Exception e) {
+            LogUtil.e(e);
+        }
+        return "";
+    }
+
+    public static int getVersionCode() {
+        try {
+            PackageManager manager = getContext().getPackageManager();
+            PackageInfo info = manager.getPackageInfo(getContext().getPackageName(), 0);
+            return info.versionCode;
+        } catch (Exception e) {
+            LogUtil.e(e);
+            return -1;
+        }
     }
 
 }
