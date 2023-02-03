@@ -25,7 +25,16 @@ public class AppUtil {
     }
 
     public static void attachContext(Context ctx) {
-        sContext = ctx.getApplicationContext();
+        Context context = ctx.getApplicationContext();
+        if (context == null) {
+            sContext = ctx;
+        } else {
+            sContext = context;
+        }
+    }
+
+    public static void setContext(Context context) {
+        sContext = context;
     }
 
     public static Context getContext() {
