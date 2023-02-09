@@ -3,6 +3,6 @@ jdk:
 before_install:
    - chmod +x ./gradlew
 install:
-   - ./gradlew clean -xtest -xlint :library:assembleRelease publishToMavenLocal
+   - ./gradlew clean -xtest -xlint assembleRelease publishToMavenLocal
 env:
    MYVAR: "custom environment variable"
