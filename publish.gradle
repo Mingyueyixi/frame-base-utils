@@ -28,7 +28,9 @@ afterEvaluate {
                 from components.release // 表示发布 release（jitpack 都不会使用到）
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.lu.magic.frameutil' // 这个是依赖库的组 id
-                artifactId = 'core' // 依赖库的名称（jitpack 都不会使用到）
+                // 依赖库的名称（jitpack 发布时使用的是github项目/模块名称，但多个子模块发布时，maven需要区分产物，否则就覆盖了）
+                artifactId = project.ext.find('releaseArtifactId') ?: project.name
+                println("$artifactId publishing................")
                 version = releaseVersion
 
                 pom {

@@ -5,7 +5,10 @@ apply {
 //android {
 //    namespace 'com.lu.magic.frame.baseutils'
 //}
-
+//
+//ext {
+//    releaseArtifactId = 'core'
+//}
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
     implementation(project(":base"))
