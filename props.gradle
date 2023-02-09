@@ -22,4 +22,5 @@ ext {
             'com.amap.api:location'                           : 'com.amap.api:location:6.2.0',
             'com.amap.api:search'                             : 'com.amap.api:search:9.5.0'
     ]
+    releaseVersion = "1.0"
 }

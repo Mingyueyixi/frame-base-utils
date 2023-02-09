@@ -1,33 +1,11 @@
 apply {
     from rootProject.file('module.gradle')
-    plugin 'maven-publish'
-}
-task generateSourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier 'sources'
 }
 
-android {
-    namespace 'com.lu.magic.frame.baseutils'
-}
-
-afterEvaluate {
-    publishing {
-        def versionName = "1.0.0" // 当前版本依赖库版本号，这个jitpack不会使用到，只是我们开发者自己查看
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                // Applies the component for the release build variant.
-                from components.release // 表示发布 release（jitpack 都不会使用到）
-
-                // You can then customize attributes of the publication as shown below.
-                groupId = 'com.lu.magic.frameutil' // 这个是依赖库的组 id
-                artifactId = 'base' // 依赖库的名称（jitpack 都不会使用到）
-                version = versionName
-            }
-        }
-    }
-}
+//android {
+//    namespace 'com.lu.magic.frame.baseutils'
+//}
+//
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])

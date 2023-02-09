@@ -2,10 +2,12 @@ apply {
     plugin 'com.android.library'
     plugin 'org.jetbrains.kotlin.android'
     from rootProject.file('props.gradle')
+    from rootProject.file('publish.gradle')
 }
 android {
-    compileSdk 33
+    namespace 'com.lu.magic.frame.baseutils'
 
+    compileSdk 33
     defaultConfig {
         minSdk 23
         targetSdk 33
