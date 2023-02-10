@@ -11,7 +11,7 @@ apply {
 //}
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
-    implementation(project(":base"))
+    api(project(":base"))
     implementation(deps['androidx.appcompat:appcompat'])
     compileOnly(deps['com.google.code.gson:gson'])
 //    implementation(deps['com.blankj:utilcodex'])
