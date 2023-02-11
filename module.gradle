@@ -40,12 +40,15 @@ android {
         jvmTarget = '1.8'
     }
 //    viewBinding {
-//        enabled = true
+//        enabled = false
 //    }
 
-//    buildFeatures {
-//        dataBinding true
-//    }
+    //4.1以上新的写法
+    buildFeatures {
+        //不要打包BuildConfig文件
+        buildConfig = false
+//        resValues = false
+    }
 }
 
 
