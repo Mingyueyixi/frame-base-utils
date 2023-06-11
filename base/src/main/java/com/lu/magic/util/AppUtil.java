@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 
 import com.lu.magic.util.log.LogUtil;
 
@@ -46,8 +47,7 @@ public class AppUtil {
 
     public static Application getApplicationByReflect() {
         try {
-            @SuppressLint("PrivateApi")
-            Class<?> activityThread = Class.forName("android.app.ActivityThread");
+            @SuppressLint("PrivateApi") Class<?> activityThread = Class.forName("android.app.ActivityThread");
             Object thread = activityThread.getMethod("currentActivityThread").invoke(null);
             Object app = activityThread.getMethod("getApplication").invoke(thread);
             if (app == null) {
@@ -112,4 +112,39 @@ public class AppUtil {
         }
     }
 
+    private static Resources getResources() {
+        return getContext().getResources();
+    }
+
+    public static ClassLoader getClassLoader() {
+        return getContext().getClassLoader();
+    }
+
+    public static String getPackageName() {
+        return getContext().getPackageName();
+    }
+
+    public static int getViewId(String idName) {
+        return getResources().getIdentifier(idName, "id", getPackageName());
+    }
+
+    public static int getLayoutId(String idName) {
+        return getResources().getIdentifier(idName, "layout", getPackageName());
+    }
+
+    public static int getStringId(String idName) {
+        return getResources().getIdentifier(idName, "string", getPackageName());
+    }
+
+    public static int getDrawableId(String idName) {
+        return getResources().getIdentifier(idName, "drawable", getPackageName());
+    }
+
+    public static int getDimenId(String idName) {
+        return getResources().getIdentifier(idName, "dimen", getPackageName());
+    }
+
+    public static int getMipmapId(String idName) {
+        return getResources().getIdentifier(idName, "mipmap", getPackageName());
+    }
 }
