@@ -11,6 +11,10 @@ public class LogUtil {
         sLogger = logger;
     }
 
+    public static void v(Object... objects) {
+        sLogger.v(objects);
+    }
+
     public static void d(Object... objects) {
         sLogger.d(objects);
     }

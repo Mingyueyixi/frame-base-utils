@@ -5,6 +5,11 @@ import android.util.Log
 open class SimpleLogger : ILogger {
     companion object {
         const val TAG = ">>>"
+        const val LEVEL_V = 0
+        const val LEVEL_D = 1
+        const val LEVEL_I = 2
+        const val LEVEL_W = 3
+        const val LEVEL_E = 4
     }
 
     override fun v(vararg objects: Any?) {
@@ -35,11 +40,11 @@ open class SimpleLogger : ILogger {
         val msg = buildLogText(objects)
         beforeLog(level, objects, msg)
         when (level) {
-            0 -> Log.v(TAG, msg)
-            1 -> Log.d(TAG, msg)
-            2 -> Log.i(TAG, msg)
-            3 -> Log.w(TAG, msg)
-            4 -> Log.e(TAG, msg)
+            LEVEL_V -> Log.v(TAG, msg)
+            LEVEL_D -> Log.d(TAG, msg)
+            LEVEL_I -> Log.i(TAG, msg)
+            LEVEL_W -> Log.w(TAG, msg)
+            LEVEL_E -> Log.e(TAG, msg)
             else -> Log.d(TAG, msg)
         }
         afterLog(level, objects, msg)
