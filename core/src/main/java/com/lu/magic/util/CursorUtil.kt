@@ -8,10 +8,19 @@ import androidx.core.database.getStringOrNull
 
 object CursorUtil {
 
-    fun getAll(cursor: Cursor?): MutableList<MutableMap<String, Any?>> {
+    @JvmOverloads
+    fun getAll(
+        cursor: Cursor?,
+        formPrevious: Boolean = true,
+        revertPos: Boolean = false
+    ): MutableList<MutableMap<String, Any?>> {
         val lst = mutableListOf<MutableMap<String, Any?>>()
         if (cursor == null) {
             return lst
+        }
+        val pos = cursor.position
+        if (formPrevious) {
+            cursor.moveToPrevious()
         }
         while (cursor.moveToNext()) {
             val row = mutableMapOf<String, Any?>()
@@ -25,9 +34,12 @@ object CursorUtil {
                     Cursor.FIELD_TYPE_NULL -> null
                     else -> null
                 }
-                row.put(columnName, value)
+                row[columnName] = value
             }
             lst.add(row)
+        }
+        if (revertPos) {
+            cursor.moveToPosition(pos)
         }
         return lst
     }
@@ -39,7 +51,10 @@ object CursorUtil {
         val lst = getAll(cursor)
         return runCatching {
             val json = GsonUtil.toJson(lst)
-            GsonUtil.fromJson<MutableList<T>>(json, GsonUtil.getType(MutableList::class.java, itemType))
+            GsonUtil.fromJson<MutableList<T>>(
+                json,
+                GsonUtil.getType(MutableList::class.java, itemType)
+            )
         }.getOrDefault(mutableListOf())
 
     }
