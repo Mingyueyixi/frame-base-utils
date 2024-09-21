@@ -22,11 +22,11 @@ class PackageUtil {
         }
 
         fun isSystemApp(pkg: PackageInfo): Boolean {
-            return hasFlag(pkg.applicationInfo, ApplicationInfo.FLAG_SYSTEM)
+            return hasFlag(pkg.applicationInfo!!, ApplicationInfo.FLAG_SYSTEM)
         }
 
         fun isDebugApp(pkg: PackageInfo): Boolean {
-            return hasFlag(pkg.applicationInfo, ApplicationInfo.FLAG_DEBUGGABLE)
+            return hasFlag(pkg.applicationInfo!!, ApplicationInfo.FLAG_DEBUGGABLE)
         }
 
         fun hasFlag(appInfo: ApplicationInfo, flag: Int): Boolean {

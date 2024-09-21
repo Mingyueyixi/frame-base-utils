@@ -1,8 +1,8 @@
 jdk:
-- openjdk11
+- openjdk17
 before_install:
    - chmod +x ./gradlew
 install:
-   - ./gradlew clean -xtest -xlint assembleRelease publishToMavenLocal
+   - ./gradlew clean -xtest -xlint assembleRelease publishReleasePublicationToMavenLocal
 env:
    MYVAR: "custom environment variable"

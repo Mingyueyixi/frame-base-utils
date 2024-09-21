@@ -2,8 +2,9 @@ package com.lu.magic.util.view;
 
 import android.view.View;
 
-import androidx.core.util.Consumer;
-import androidx.core.util.Predicate;
+import com.lu.magic.util.function.Consumer;
+import com.lu.magic.util.function.Predicate;
+
 
 /**
  * @Author: Lu

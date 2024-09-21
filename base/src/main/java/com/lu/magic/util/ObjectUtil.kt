@@ -1,7 +1,7 @@
 package com.lu.magic.util
 
 import com.google.gson.internal.UnsafeAllocator
-import java.util.function.Consumer
+import com.lu.magic.util.function.Consumer
 
 class ObjectUtil {
     companion object {
